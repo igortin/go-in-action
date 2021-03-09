@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -12,7 +13,6 @@ func main() {
 	var wg sync.WaitGroup
 
 	for _, filename := range os.Args[1:] {
-		// Variable filename and file are accesable only within current iteration and in body of loop for.
 		fileSlice := strings.Split(filename, `/`)
 		file := fileSlice[len(fileSlice)-1]
 
@@ -34,13 +34,13 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-
-			log.Printf("Successfully compressed: %s\n", file)
+			fmt.Printf("Successfully compressed %v\n", file)
 			// Decrement from WaitGroup counter
 			wg.Done()
 
 		}(filename)
 	}
+
 	// Wait until WaitGroup counter is 0 value
 	wg.Wait()
 }
