@@ -5,7 +5,8 @@ import (
 	"time"
 )
 
-// Reciever (main goroutine) send signal to Sender (externalVal goroutine) about stop process.
+// Reciever (main goroutine) send signal to Sender (externalVal goroutine) about stopping recieving events and proccessing.
+// Sender should close channel.
 func main() {
 	// Control channel for close `ch` channel on sender side
 	control := make(chan bool)
@@ -45,6 +46,7 @@ func externalVal(ch chan []byte, control chan bool) {
 			// Get stop signal from control channel and close ch channel
 			close(ch)
 			log.Println("Channel ch: closed")
+			// Stop goroutine
 			return
 		default:
 			// Send []byte to `ch` channel
