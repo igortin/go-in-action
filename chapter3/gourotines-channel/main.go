@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	// Create channel with timeout
+	// Create channel time.Time with timeout
 	done := time.After(30 * time.Second)
 
 	// Create channel for between goroutines
