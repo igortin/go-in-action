@@ -6,6 +6,7 @@ import (
 )
 
 // Reciever (main goroutine) send signal to Sender (externalVal goroutine) about stop process.
+// Pattern: Наблюдатель
 func main() {
 	// Control channel for close `ch` channel on sender side
 	control := make(chan bool)
