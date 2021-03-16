@@ -15,7 +15,7 @@ func main() {
 
 	chLocker := make(chan bool, 1)
 
-	for i := 0; i < 2; i++ {
+	for i := 0; i < 5; i++ {
 
 		/*
 			id 0 send value to chan chLocker - true and locked it (like Mutex)
