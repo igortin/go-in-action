@@ -34,6 +34,7 @@ func OpenFileSVC(filename string) (file *os.File, err error) {
 		if r := recover(); r != nil {
 			fmt.Printf("Trapped: file %v was closed correctly\n", file.Name())
 			file.Close()
+			// custing
 			err = r.(error)
 		}
 	}()
